@@ -1,0 +1,9 @@
+CREATE DATABASE example_jsp;
+
+
+CREATE TABLE tb_people (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL ,
+  email VARCHAR(100) NOT NULL
+
+)Engine=InnoDB;
