@@ -6,21 +6,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.rafaelamaral.model.People;
-import com.rafaelamaral.repository.connection.SingleConnectionDataBase;
+import com.rafaelamaral.util.ConnectionUtil;
 
 public class DAOPeopleRepository {
 
-	private Connection connection;
-
-	public DAOPeopleRepository() {
-		connection = SingleConnectionDataBase.getConnection();
-	}
-
 	public ArrayList<People> listAll() {
 
-		ArrayList<People> list = new ArrayList<People>();
-
 		try {
+
+			Connection connection = ConnectionUtil.getInstance().getConnection();
+
+			ArrayList<People> list = new ArrayList<People>();
 
 			String sql = "SELECT * FROM tb_people";
 
@@ -33,10 +29,9 @@ public class DAOPeopleRepository {
 				String name = resultSet.getString(2);
 				String email = resultSet.getString(3);
 
-				list.add(new People(id ,  name , email));
+				list.add(new People(id, name, email));
 			}
-			
-			preparedStatement.close();
+
 			return list;
 
 		} catch (Exception e) {
@@ -47,52 +42,86 @@ public class DAOPeopleRepository {
 	}
 
 	public void save(People people) {
-		try {
-			String sql = "INSERT INTO tb_people(name,email) values(? , ?)";
 
+		try {
+
+			Connection connection = ConnectionUtil.getInstance().getConnection();
+
+			String sql = "INSERT INTO tb_people(name,email) values(? , ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
 			preparedStatement.setString(1, people.getName());
 			preparedStatement.setString(2, people.getEmail());
 
 			preparedStatement.executeUpdate();
-			preparedStatement.close();
+			connection.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void remove(Long id) {
+
 		try {
+
 			String sql = "DELETE FROM tb_people WHERE id=(?)";
+			
+			Connection connection = ConnectionUtil.getInstance().getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
 			preparedStatement.setLong(1, id);
 
 			preparedStatement.executeUpdate();
-			preparedStatement.close();
+			connection.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public void update(People people) {
+
 		try {
-			String sql = "UPDATE tb_people set name=? email=?  WHERE id = ?";
+
+			String sql = "UPDATE tb_people set name=? , email=?  WHERE id = ?";
+
+			Connection connection = ConnectionUtil.getInstance().getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-			preparedStatement.setString(1,people.getName());
-			preparedStatement.setString(2,people.getEmail());
+			preparedStatement.setString(1, people.getName());
+			preparedStatement.setString(2, people.getEmail());
 			preparedStatement.setLong(3, people.getId());
 
-
 			preparedStatement.executeUpdate();
-			preparedStatement.close();
+			connection.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void selectPeople(People people) {
+		try {
+
+			Connection connection = ConnectionUtil.getInstance().getConnection();
+
+			String sql = "SELECT * FROM tb_people WHERE id = ?";
+
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setLong(1, people.getId());
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				people.setId(resultSet.getLong(1));
+				people.setName(resultSet.getString(2));
+				people.setEmail(resultSet.getString(3));
+			}
+
+			connection.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

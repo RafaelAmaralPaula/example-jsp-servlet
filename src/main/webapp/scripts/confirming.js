@@ -6,6 +6,4 @@ function confirmation(id){
 		
 	}
 	
-	alert("People delete with sucess")
-	
 }

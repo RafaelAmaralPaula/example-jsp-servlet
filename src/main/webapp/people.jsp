@@ -44,15 +44,14 @@ ArrayList<People> list = (ArrayList<People>) request.getAttribute("peoples");
 		</thead>
 		<tbody>
 			<%
-			for (int i = 0; i < list.size(); i++) {
-			%>
+			for (int i = 0; i < list.size(); i++) {%>
 			<tr>
 				<td><%=list.get(i).getId()%></td>
 				<td><%=list.get(i).getName()%></td>
 				<td><%=list.get(i).getEmail()%></td>
 				
-				<td><a href="update">Update</a></td>
 				<td><a href="javascript:confirmation(<%=list.get(i).getId()%>)">Delete</a></td>
+				<td><a href="select?id=<%=list.get(i).getId()%>">Update</a></td>
 			</tr>
 
 			<%}%>

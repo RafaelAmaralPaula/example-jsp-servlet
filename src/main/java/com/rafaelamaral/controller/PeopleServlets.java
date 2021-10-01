@@ -18,12 +18,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.rafaelamaral.model.People;
 import com.rafaelamaral.repository.dao.DAOPeopleRepository;
 
-@WebServlet(urlPatterns = { "/insert", "/main", "/report" , "/delete" })
+@WebServlet(urlPatterns = { "/insert", "/main", "/report" , "/delete" , "/select" , "/update" })
 public class PeopleServlets extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	private DAOPeopleRepository repository = new DAOPeopleRepository();
+	
+	private People people = new People();
 
 	public PeopleServlets() {
 
@@ -42,11 +44,45 @@ public class PeopleServlets extends HttpServlet {
 			generateReport(request, response);
 		}else if(action.equals("/delete")) {
 			delete(request , response);
+		}else if(action.equals("/select")) {
+			selectPeople(request , response);
+		}else if(action.equals("/update")) {
+			update(request , response);
 		}else {
 			response.sendRedirect("index.jsp");
 
 		}
 
+	}
+
+	private void update(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		String idPeople = request.getParameter("id");
+		people.setId(Long.parseLong(idPeople));
+		
+		people.setName(request.getParameter("name"));
+		people.setEmail(request.getParameter("email"));
+		
+		repository.update(people);
+		
+		response.sendRedirect("main");
+	}
+
+	private void selectPeople(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		String idPeople = request.getParameter("id");
+		people.setId(Long.parseLong(idPeople));
+		
+		repository.selectPeople(people);
+		
+		request.setAttribute("id", people.getId());
+		request.setAttribute("name", people.getName());
+		request.setAttribute("email", people.getEmail());
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
+		dispatcher.forward(request, response);
+		
+		
+		
+		
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
