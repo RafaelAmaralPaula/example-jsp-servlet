@@ -16,7 +16,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rafaelamaral.model.People;
-import com.rafaelamaral.repository.dao.DAOPeopleRepository;
+import com.rafaelamaral.repository.DAOPeopleRepository;
 
 @WebServlet(urlPatterns = { "/insert", "/main", "/report" , "/delete" , "/select" , "/update" })
 public class PeopleServlets extends HttpServlet {

@@ -1,5 +1,7 @@
 CREATE DATABASE example_jsp;
 
+USE example_jsp;
+
 
 CREATE TABLE tb_people (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -7,3 +9,16 @@ CREATE TABLE tb_people (
   email VARCHAR(100) NOT NULL
 
 )Engine=InnoDB;
+
+INSERT INTO tb_people(name , email)VALUES('João Silva ' ,  'joaosilva@joaosilva.com');
+INSERT INTO tb_people(name , email)VALUES('Maria Santos ' ,  'mariasantos@mariasantos.com');
+INSERT INTO tb_people(name , email)VALUES('Marta Oliveira ' ,  'martaoliveira@martaoliveira.com');
+INSERT INTO tb_people(name , email)VALUES('Pablo Ferreira ' ,  'pabloferreira@pabloferreira.com');
+INSERT INTO tb_people(name , email)VALUES('Paulo Eduardo ' ,  'pauloeduardo@gmail.com');
+INSERT INTO tb_people(name , email)VALUES('Mauro Sérgio ' ,  'maurosergio@hotmail.com');
+INSERT INTO tb_people(name , email)VALUES('Jośe Silva ' ,  'josesilva@josesilva.com');
+INSERT INTO tb_people(name , email)VALUES('Romeu Miranda ' ,  'contato@romeumiranda.com');
+INSERT INTO tb_people(name , email)VALUES('Ricardo Lima ' ,  'ricardolima@ricardolima.com');
+INSERT INTO tb_people(name , email)VALUES('Sarah Lima ' ,  'sarahlima@gmail.com');
+INSERT INTO tb_people(name , email)VALUES('Clara Santa ' ,  'clarasantana@clarasantana.com');
+INSERT INTO tb_people(name , email)VALUES('Vera Lúcia ' ,  'veralucia@veralucia.com');

@@ -3,9 +3,6 @@
 <%@ page import="com.rafaelamaral.model.People"%>
 <%@ page import="java.util.ArrayList"%>
 
-<%
-	ArrayList<People> list = (ArrayList<People>)request.getAttribute("peoples");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -21,11 +18,11 @@
 	<div class="container" style="margin-top: 150px;" >
             <div class="jumbotron">
                 <h1>Course JSP & Servlet</h1>
-                <p class="lead">Analise o desempenho das suas vendas por diferentes perspectivas</p>
+                <p class="lead">App que permite todas operações CRUD</p>
                 <hr/>
-                <p>Esta aplicação consiste em exibir um dashboard a partir de dados fornecidos por um back end construído com Spring Boot.</p>
+                <p>Esta aplicação consiste em permite ao cliente realizar cadastramento de todas pessoas que conhecem.</p>
                 <a class="btn btn-primary btn-lg" href="main">
-                    Access Peoples
+                    Acessar lista
                 </a>
            </div>
         </div>

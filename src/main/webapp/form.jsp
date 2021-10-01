@@ -19,8 +19,8 @@
 	<header>
 		<nav class="navbar navbar-light bg-light">
 			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Cadastro
-				Vendedor </span><a href="main" class="btn btn-primary"
-				role="button">Voltar para tela inicial</a>
+				Pessoas </span><a href="main" class="btn btn-primary"
+				role="button">Home</a>
 		</nav>
 	</header>
 
@@ -48,7 +48,7 @@
 					placeholder="contato@gteste.com" name="email" required="required"/>
 			</div>
 		</div>
-		<button type="submit" onclick="validar()" class="btn btn-primary" style="margin-top: 10px; margin-right: 84%; width: 20%;">Save</button>
+		<button type="submit" onclick="validar()" class="btn btn-primary" style="margin-top: 10px; margin-right: 84%; width: 20%;">Salvar</button>
 	</form>
 	
 	<script src="scripts/validation.js"></script>

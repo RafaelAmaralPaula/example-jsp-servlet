@@ -4,12 +4,12 @@ function validar(){
 	var email = form.email
 	
 	if(name.value == ""){
-		alert("Preencha campo name");
+		alert("Fill in the name field");
 		name.focus()
 		
 		return false
 	}else if(email.value == ""){
-		alert("Preencha campo e-mail");
+		alert("Fill in the email field");
 		email.focus()
 		
 		return false

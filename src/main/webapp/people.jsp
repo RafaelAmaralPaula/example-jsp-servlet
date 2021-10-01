@@ -22,12 +22,12 @@ ArrayList<People> list = (ArrayList<People>) request.getAttribute("peoples");
 		<nav class="navbar navbar-light bg-light">
 
 			
-			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">List
-				of People </span>
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Lista
+				De Pessoas </span>
 			<div class="d-grid gap-2 d-md-block">
 				<a class="btn btn-danger" href="index.jsp" type="button">Home</a>
 				<a class="btn btn-primary" href="form.jsp" type="button">Save</a>
-				<a class="btn btn-primary" href="report" type="button">Report</a>
+				<a class="btn btn-dark" href="report" type="button">Report</a>
 			</div>
 
 		</nav>
